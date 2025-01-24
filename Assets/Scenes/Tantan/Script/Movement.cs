@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [Header("Player Sprite")]
+    [SerializeField] GameObject playerSprite;
+
     [SerializeField] float speed = 5f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         PlayerMovement();
@@ -31,10 +26,12 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
+            playerSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
+            playerSprite.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 }

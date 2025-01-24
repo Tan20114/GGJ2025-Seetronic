@@ -5,6 +5,7 @@ using UnityEngine;
 public class check_Interaction : MonoBehaviour
 {
     private bool _IscanInteract = false;
+    public bool CanInteract { get { return _IscanInteract; } }
     private void OnTriggerEnter(Collider plane)
     {
         if (plane.CompareTag("plane"))
@@ -25,10 +26,18 @@ public class check_Interaction : MonoBehaviour
 
     private void Update()
     {
+        IsInteracted();
+    }
+
+    public bool IsInteracted()
+    {
         if (_IscanInteract && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Interaction triggered!");
+            return true;
         }
+        else
+            return false;
     }
 
 }
