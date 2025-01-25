@@ -304,4 +304,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transAnimator: {fileID: 4848555403810499858}
-  animTime: 1
+  animTime: 2

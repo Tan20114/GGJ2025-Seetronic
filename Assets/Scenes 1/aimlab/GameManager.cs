@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Text scoreText;
-    public Text timerText;
-    public Text EndText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI EndText;
 
     private int score = 0;
     private float gameTime = 15f;
@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        EndText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -36,10 +38,15 @@ public class GameManager : MonoBehaviour
         scoreText.text = $"Score : {score}";
     }
 
-    private void EndGame()
+    public bool EndGame()
     {
+        bool isEnd = true;
+
+        EndText.gameObject.SetActive(true);
         Debug.Log("End Score: " + score);
         Time.timeScale = 0;
-        EndText.text = $"End Game {EndText}";
+        EndText.text = $"End Game \n Final Score : {score}";
+
+        return isEnd;
     }
 }

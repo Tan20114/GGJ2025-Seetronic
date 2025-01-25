@@ -11,7 +11,7 @@ public class Buuuu : MonoBehaviour
     public int scoreValue = 10;
     void Start()
     {
-        ts = GameObject.Find("Targetspawn").GetComponent<targetspawn>();
+        ts = FindAnyObjectByType<targetspawn>();
     }
     void OnMouseDown()
     {

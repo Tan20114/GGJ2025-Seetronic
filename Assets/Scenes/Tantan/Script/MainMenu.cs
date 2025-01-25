@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     void StartGame()
     {
-        StartCoroutine(sl.LoadScene(0));
+        StartCoroutine(sl.LoadScene(1));
     }
 
 
