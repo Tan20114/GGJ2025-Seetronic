@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ChatBuuble : MonoBehaviour
 {
@@ -16,9 +17,10 @@ public class ChatBuuble : MonoBehaviour
     [Header("Animation")]
     [SerializeField] float animTime = 1f;
     [Header("Text Parameter")]
-    [SerializeField] string txt;
+    [SerializeField, MaxLength(11)] string txt;
     [SerializeField] float typeSpeed = 0.05f;
     [SerializeField] float loopInterval = 2f;
+    [SerializeField] float paddingVal;
     [Header("Shake Parameter")]
     [SerializeField] private float shakeMagnitude = 2f;
     [SerializeField] private float shakeFrequency = 0.1f;
@@ -37,6 +39,11 @@ public class ChatBuuble : MonoBehaviour
         Setup(txt);
     }
 
+    private void OnDisable()
+    {
+        this.transform.localScale = new Vector3(0, 0, 0);
+    }
+
     IEnumerator StartAnim()
     {
         animPlayer.SetTrigger("ChatBubble");
@@ -48,10 +55,29 @@ public class ChatBuuble : MonoBehaviour
     {
         StartTyping(txt);
         text.ForceMeshUpdate();
+
         Vector2 textSize = text.GetRenderedValues(false);
-        Vector2 padding = new Vector2(2, 2);
-        sr.size = textSize + padding;
+
+        Vector2 padding = new Vector2(paddingVal, paddingVal);
+
+        Vector3 newScale = new Vector3(
+            (textSize.x + paddingVal) / sr.sprite.bounds.size.x,
+            (textSize.y + paddingVal) / sr.sprite.bounds.size.y,
+            1f
+        );
+
+        sr.transform.localScale = newScale;
+
+        text.alignment = TextAlignmentOptions.Left;
+
+        sr.transform.localPosition = new Vector3(
+            sr.transform.localPosition.x - (textSize.x + padding.x) / 2,
+            sr.transform.localPosition.y,
+            sr.transform.localPosition.z
+        );
     }
+
+
 
     public void StartTyping(string text)
     {
@@ -71,12 +97,19 @@ public class ChatBuuble : MonoBehaviour
         text.text = ""; // Clear text initially
         text.ForceMeshUpdate(); // Update the text mesh
 
+        // Start typing the text character by character
         for (int i = 0; i < txt.Length; i++)
         {
             text.text += txt[i];
+            text.ForceMeshUpdate(); // Force update after each character
+
+            // Dynamically adjust the background size
+            UpdateBackgroundSize();
+
             yield return new WaitForSeconds(typeSpeed);
         }
 
+        // Reset effects after typing
         if (shakeEffect && shakeCoroutine != null)
         {
             StopCoroutine(shakeCoroutine);
@@ -96,6 +129,22 @@ public class ChatBuuble : MonoBehaviour
             yield return new WaitForSeconds(loopInterval);
             typingCoroutine = StartCoroutine(TypeText());
         }
+    }
+
+    private void UpdateBackgroundSize()
+    {
+        Vector2 textSize = text.GetRenderedValues(false);
+        Vector2 padding = new Vector2(paddingVal, paddingVal);
+
+        Vector3 newScale = new Vector3(
+            (textSize.x + paddingVal) / sr.sprite.bounds.size.x,
+            5f,
+            1f
+        );
+
+        Vector3 center = sr.transform.position - (sr.bounds.size * 0.5f);
+        text.transform.position = new Vector3(center.x/2, text.transform.position.y, text.transform.position.z);
+        sr.transform.localScale = newScale;
     }
 
     void ResetEffect()

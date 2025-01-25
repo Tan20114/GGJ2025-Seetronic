@@ -5,9 +5,17 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header("Player Sprite")]
-    [SerializeField] GameObject playerSprite;
+    [SerializeField] private GameObject playerSprite;
 
-    [SerializeField] float speed = 5f;
+    [Header("Movement Speed")]
+    [SerializeField] private float speed = 5f;
+
+    [Header("Animator")]
+    [SerializeField] private Animator animPlayer;
+
+    private Vector3 movement; // For tracking input
+    private bool isMoving;    // To determine animation state
+
     void Update()
     {
         PlayerMovement();
@@ -15,23 +23,29 @@ public class Movement : MonoBehaviour
 
     void PlayerMovement()
     {
+        movement = Vector3.zero;
+
         if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }
+            movement += Vector3.forward;
+        if (Input.GetKey(KeyCode.S)) 
+            movement += Vector3.back;
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            movement += Vector3.left;
             playerSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            movement += Vector3.right;
             playerSprite.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
+        isMoving = movement != Vector3.zero;
+        if (isMoving)
+        {
+            transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+        }
+
+        animPlayer.SetBool("isWalk", isMoving);
     }
 }

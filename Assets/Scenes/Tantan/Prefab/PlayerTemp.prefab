@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 616767542361391463}
   speed: 5
+  animPlayer: {fileID: 369865300263569293}
 --- !u!1 &616767542361391463
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -393794423, guid: 0038368532b11884fbe9a63e1b0a4f32, type: 3}
+  m_Sprite: {fileID: -655123662, guid: 7d650c9908099814fa139704c67defcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -325,6 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f99798dfdb5c745bb5d7ce224f9a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _IscanInteract: 0
+  isInteracted: 0
 --- !u!1001 &5852827851307875939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1766182524713977817, guid: 7bf16ab59a3cba54b9638c89cc209a2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6748552085091955622, guid: 7bf16ab59a3cba54b9638c89cc209a2b, type: 3}
       propertyPath: m_LocalScale.x

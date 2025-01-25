@@ -1,43 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class check_Interaction : MonoBehaviour
+public class CheckInteraction : MonoBehaviour
 {
-    private bool _IscanInteract = false;
-    public bool CanInteract { get { return _IscanInteract; } }
-    private void OnTriggerEnter(Collider plane)
+    private InteractableObject currentInteractable;
+    private bool canInteract = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (plane.CompareTag("plane"))
+        if (other.CompareTag("Interactable"))
         {
             Debug.Log("Press E to interact");
-            _IscanInteract = true;
+            currentInteractable = other.GetComponent<InteractableObject>();
+
+            if (currentInteractable != null)
+            {
+                canInteract = true;
+                currentInteractable.CanInteract = true;
+            }
         }
     }
 
-    private void OnTriggerExit(Collider plane)
+    private void OnTriggerExit(Collider other)
     {
-        if (plane.CompareTag("plane"))
+        if (other.CompareTag("Interactable"))
         {
             Debug.Log("Left interaction zone");
-            _IscanInteract = false; 
+
+            if (currentInteractable != null)
+            {
+                currentInteractable.CanInteract = false;
+                currentInteractable = null;
+            }
+
+            canInteract = false;
         }
     }
 
     private void Update()
     {
-        IsInteracted();
-    }
-
-    public bool IsInteracted()
-    {
-        if (_IscanInteract && Input.GetKeyDown(KeyCode.E))
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
-            Debug.Log("Interaction triggered!");
-            return true;
+            Debug.Log("Interacted");
+            currentInteractable.isInteracted = !currentInteractable.isInteracted;
         }
-        else
-            return false;
     }
-
 }

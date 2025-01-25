@@ -1,52 +1,50 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    protected check_Interaction ci;
+    protected Movement mm;
 
     public bool isInteracted = false;
+    public bool CanInteract;
 
     [SerializeField] private float uiShowTime;
 
     [SerializeField] GameObject visualInteractable;
     [SerializeField] protected GameObject uiElement;
-    private void Start()
+
+    protected void Start()
     {
-        ci = FindAnyObjectByType<check_Interaction>();
+        mm = FindObjectOfType<Movement>();
+
+        uiElement.SetActive(false);
+        visualInteractable.SetActive(false);
     }
 
     protected void Update()
     {
-        Interacted();
         CanInteractVisualize();
+        Interacted();
     }
 
     private void CanInteractVisualize()
     {
-        if(ci.CanInteract)
-        {
-            visualInteractable.SetActive(true);
-        }
-        else
-        {
-            visualInteractable.SetActive(false);
-        }
+        visualInteractable.SetActive(CanInteract);
     }
 
     public virtual void Interacted()
     {
-        if (ci.IsInteracted())
+        if (isInteracted)
         {
-            StartCoroutine(ShowUI());
+            uiElement.SetActive(true);
+            mm.enabled = false;
+        }
+        else
+        {
+            uiElement.SetActive(false);
+            mm.enabled = true;
         }
     }
 
-    protected IEnumerator ShowUI()
-    {
-        uiElement.SetActive(true);
-        yield return new WaitForSeconds(uiShowTime);
-        uiElement.SetActive(false);
-    }
+    
 }
