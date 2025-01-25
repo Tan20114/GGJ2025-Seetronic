@@ -10,11 +10,6 @@ public class Banana : InteractableObject
     [SerializeField] private TextMeshProUGUI scoreTxt;
     private int score = 0;
 
-    private void Awake()
-    {
-        GetData();
-    }
-
     private void Start()
     {
         base.Start();
@@ -35,25 +30,5 @@ public class Banana : InteractableObject
     void AddScore()
     {
         score++;
-    }
-
-    public void SaveData()
-    {
-        PlayerPrefs.SetInt("BananaScore", score);
-        PlayerPrefs.Save();
-    }
-
-    public int GetData()
-    {
-        int scr;
-
-        if (PlayerPrefs.HasKey("BananaScore"))
-        {
-            scr = PlayerPrefs.GetInt("BananaScore");
-        }
-        else
-            scr = 0;
-
-        return scr;
     }
 }
