@@ -9,6 +9,7 @@ public class LightTemp : MonoBehaviour
     [SerializeField] List<GameObject> lights;
     [SerializeField] GameObject light;
     [SerializeField] GameObject volume;
+    [SerializeField] GameObject triggerBox;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class LightTemp : MonoBehaviour
 
     public void Update()
     {
-        if (io.isInteracted)
+        if (io.isInteracted && ScoreManager.totalScore == 6)
         {
             foreach (GameObject light in lights)
             {
@@ -25,6 +26,7 @@ public class LightTemp : MonoBehaviour
             }
             light.SetActive(false);
             volume.SetActive(false);
+            triggerBox.SetActive(true);
         }
     }
 }

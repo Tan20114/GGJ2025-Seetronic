@@ -550,6 +550,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &154896774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 110814052933420053, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
+  m_PrefabInstance: {fileID: 779956892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &165039967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8998926020587335825, guid: b44f97629f340f44c88d19a95fb03641, type: 3}
@@ -1420,6 +1425,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 94098489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &706942830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6424746736443183016, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
+  m_PrefabInstance: {fileID: 779956892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &720370584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1658,16 +1668,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 285589147474040142, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6424746736443183016, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 779956897}
   m_SourcePrefab: {fileID: 100100000, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
 --- !u!4 &779956893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1283551962811725423, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
   m_PrefabInstance: {fileID: 779956892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &779956897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706942830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f9c2626a152d147a5b8c8c70c8e665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteracted: 0
+  CanInteract: 0
+  uiShowTime: 0
+  visualInteractable: {fileID: 1317618046}
+  uiElement: {fileID: 154896774}
+  player: {fileID: 1352623598}
+  upperDoor: {fileID: 779956893}
+  lowerDoor: {fileID: 1079992515}
 --- !u!1001 &780318649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2376,7 +2410,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 285589147474040142, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3284,6 +3319,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 94098489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1317618046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 481539493745704652, guid: 96f347424264ecc48a197447f622a3ad, type: 3}
+  m_PrefabInstance: {fileID: 779956892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1352623598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4059288725629450332, guid: b44f97629f340f44c88d19a95fb03641, type: 3}
