@@ -6,12 +6,13 @@ using Unity.VisualScripting;
 
 public class ChatBuuble : MonoBehaviour
 {
+    private CheckInteraction ci;
+
     private Coroutine typingCoroutine;
     private Coroutine shakeCoroutine;
     private Coroutine bounceCoroutine;
     #region Variables
     [Header("Don't touch me")]
-    [SerializeField] SpriteRenderer sr;
     [SerializeField] TextMeshPro text;
     [SerializeField] Animator animPlayer;
     [Header("Animation")]
@@ -33,6 +34,11 @@ public class ChatBuuble : MonoBehaviour
     [SerializeField] private bool loopTyping = true;
     #endregion
 
+    private void Start()
+    {
+        ci = FindObjectOfType<CheckInteraction>();
+    }
+
     private void OnEnable()
     {
         StartCoroutine(StartAnim());
@@ -50,6 +56,12 @@ public class ChatBuuble : MonoBehaviour
         yield return new WaitForSeconds(animTime);
     }
 
+    IEnumerator EndAnim()
+    {
+        animPlayer.SetTrigger("ChatBubbleEnd");
+        yield return new WaitForSeconds(animTime);
+    }
+
     #region Text part
     void Setup(string txt)
     {
@@ -60,21 +72,7 @@ public class ChatBuuble : MonoBehaviour
 
         Vector2 padding = new Vector2(paddingVal, paddingVal);
 
-        Vector3 newScale = new Vector3(
-            (textSize.x + paddingVal) / sr.sprite.bounds.size.x,
-            (textSize.y + paddingVal) / sr.sprite.bounds.size.y,
-            1f
-        );
-
-        sr.transform.localScale = newScale;
-
         text.alignment = TextAlignmentOptions.Left;
-
-        sr.transform.localPosition = new Vector3(
-            sr.transform.localPosition.x - (textSize.x + padding.x) / 2,
-            sr.transform.localPosition.y,
-            sr.transform.localPosition.z
-        );
     }
 
 
@@ -103,9 +101,6 @@ public class ChatBuuble : MonoBehaviour
             text.text += txt[i];
             text.ForceMeshUpdate(); // Force update after each character
 
-            // Dynamically adjust the background size
-            UpdateBackgroundSize();
-
             yield return new WaitForSeconds(typeSpeed);
         }
 
@@ -129,22 +124,6 @@ public class ChatBuuble : MonoBehaviour
             yield return new WaitForSeconds(loopInterval);
             typingCoroutine = StartCoroutine(TypeText());
         }
-    }
-
-    private void UpdateBackgroundSize()
-    {
-        Vector2 textSize = text.GetRenderedValues(false);
-        Vector2 padding = new Vector2(paddingVal, paddingVal);
-
-        Vector3 newScale = new Vector3(
-            (textSize.x + paddingVal) / sr.sprite.bounds.size.x,
-            5f,
-            1f
-        );
-
-        Vector3 center = sr.transform.position - (sr.bounds.size * 0.5f);
-        text.transform.position = new Vector3(center.x, text.transform.position.y, text.transform.position.z);
-        sr.transform.localScale = newScale;
     }
 
     void ResetEffect()
