@@ -1,17 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class breaker : MonoBehaviour
 {
-    public Button targetButton; 
-    public Color newColor;
-    public void ChangeButtonColor()
+    public Button button;
+    public Color normalColor = Color.red;
+    public Color pressedColor = Color.yellow;
+    private Image buttonImage;
+
+
+    public TMP_Text buttonText;
+    public string normalText = "off";
+    public string pressedText = "on";
+
+    void Start()
     {
-        if (targetButton != null)
+        buttonImage = button.GetComponent<Image>();
+
+        if (buttonImage != null)
         {
-            targetButton.image.color = newColor;
+            buttonImage.color = normalColor;
+        }
+        button.onClick.AddListener(ChangeColor);
+        if (buttonText != null)
+        {
+            buttonText.text = normalText;
+        }
+        button.onClick.AddListener(ChangeText);
+    }
+
+    void ChangeColor()
+    {
+        if (buttonImage.color == normalColor)
+        {
+            buttonImage.color = pressedColor;
+            ScoreManager.totalScore++;
+            Debug.Log($"{ScoreManager.totalScore}");
+        }
+        else
+        {
+            buttonImage.color = normalColor;
+            ScoreManager.totalScore --;
+            Debug.Log($"{ScoreManager.totalScore}");
+        }
+        if(ScoreManager.totalScore == 6)
+        {
+            Debug.Log("ครบละไอสัส");
+        }
+    }
+    void ChangeText()
+    {
+        if (buttonText.text == normalText)
+        {
+            buttonText.text = pressedText;
+        }
+        else
+        {
+            buttonText.text = normalText;
         }
     }
 }
