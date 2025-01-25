@@ -18,7 +18,7 @@ public class ChatBuuble : MonoBehaviour
     [Header("Animation")]
     [SerializeField] float animTime = 1f;
     [Header("Text Parameter")]
-    [SerializeField, MaxLength(11)] string txt;
+    [SerializeField] string txt;
     [SerializeField] float typeSpeed = 0.05f;
     [SerializeField] float loopInterval = 2f;
     [SerializeField] float paddingVal;
