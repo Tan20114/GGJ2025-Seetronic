@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 616767542361391463}
-  speed: 5
+  speed: 3.5
   animPlayer: {fileID: 369865300263569293}
 --- !u!1 &616767542361391463
 GameObject:
@@ -326,8 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f99798dfdb5c745bb5d7ce224f9a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _IscanInteract: 0
-  isInteracted: 0
 --- !u!1001 &5852827851307875939
 PrefabInstance:
   m_ObjectHideFlags: 0

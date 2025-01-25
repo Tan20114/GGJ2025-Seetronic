@@ -143,7 +143,7 @@ public class ChatBuuble : MonoBehaviour
         );
 
         Vector3 center = sr.transform.position - (sr.bounds.size * 0.5f);
-        text.transform.position = new Vector3(center.x/2, text.transform.position.y, text.transform.position.z);
+        text.transform.position = new Vector3(center.x, text.transform.position.y, text.transform.position.z);
         sr.transform.localScale = newScale;
     }
 

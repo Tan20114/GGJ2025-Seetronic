@@ -294,7 +294,38 @@ MonoBehaviour:
   CanInteract: 0
   uiShowTime: 0
   visualInteractable: {fileID: 59152824059010480}
-  uiElement: {fileID: 0}
+  uiElement: {fileID: 5293233503704621803}
+--- !u!1 &5293233503704621803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917389485186487723}
+  m_Layer: 0
+  m_Name: damt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917389485186487723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293233503704621803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 343.25, y: 193, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6687786323921495248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7433061648399587600
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,5 +357,6 @@ Transform:
   m_Children:
   - {fileID: 444877261395216754}
   - {fileID: 1851446359840516229}
+  - {fileID: 1917389485186487723}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
