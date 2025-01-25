@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CheckInteraction : MonoBehaviour
 {
-    private InteractableObject currentInteractable;
+    public InteractableObject currentInteractable;
     private bool canInteract = false;
 
     private void OnTriggerEnter(Collider other)
