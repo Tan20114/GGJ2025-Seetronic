@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] Button startButt;
     [SerializeField] Button exitButt;
+    [SerializeField] Button creditButt;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class MainMenu : MonoBehaviour
 
         startButt.onClick.AddListener(StartGame);
         exitButt.onClick.AddListener(ExitGame);
+        creditButt.onClick.AddListener(ShowCredit);
     }
 
     void StartGame()
@@ -27,5 +29,10 @@ public class MainMenu : MonoBehaviour
     void ExitGame()
     {
         StartCoroutine(sl.ExitGame());
+    }
+
+    void ShowCredit()
+    {
+
     }
 }
