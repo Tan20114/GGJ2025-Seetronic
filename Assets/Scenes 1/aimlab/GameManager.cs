@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Text scoreText;
     public Text timerText;
+    public Text EndText;
 
     private int score = 0;
-    private float gameTime = 30f;
+    private float gameTime = 15f;
 
     private void Awake()
     {
@@ -39,5 +40,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("End Score: " + score);
         Time.timeScale = 0;
+        EndText.text = $"End Game {EndText}";
     }
 }

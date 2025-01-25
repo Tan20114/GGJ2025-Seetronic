@@ -5,7 +5,7 @@ using UnityEngine;
 public class targetspawn : MonoBehaviour
     {
     public GameObject targetPrefab;
-    public float spawnInterval = 1.5f;
+    public float spawnInterval = 1f;
     public Vector2 spawnRange = new Vector2(3f, 3f);
     public List<GameObject> gameObjects = new List<GameObject>();
 
