@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    private SceneLoader sl;
+
     public static GameManager Instance;
-    public Text scoreText;
-    public Text timerText;
-    public Text EndText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI EndText;
 
     private int score = 0;
     private float gameTime = 15f;
@@ -17,15 +20,21 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        EndText.gameObject.SetActive(false);
+        sl = FindAnyObjectByType<SceneLoader>();
     }
+
+    bool sceneTrigger = false;
 
     private void Update()
     {
         gameTime -= Time.deltaTime;
         timerText.text = $"Time : {Mathf.Max(0, Mathf.CeilToInt(gameTime))}";
 
-        if (gameTime <= 0)
+        if (gameTime <= 0 && !sceneTrigger)
         {
+            sceneTrigger = true;
             EndGame();
         }
     }
@@ -36,10 +45,14 @@ public class GameManager : MonoBehaviour
         scoreText.text = $"Score : {score}";
     }
 
-    private void EndGame()
+    bool isEnd = false;
+
+    public void EndGame()
     {
+        isEnd = true;
+        EndText.gameObject.SetActive(true);
         Debug.Log("End Score: " + score);
-        Time.timeScale = 0;
-        EndText.text = $"End Game {EndText}";
+        EndText.text = $"End Game \n Final Score : {score}";
+        StartCoroutine(sl.LoadScene(1));
     }
 }

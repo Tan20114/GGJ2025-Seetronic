@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Tantan/MainMenu.unity
+    guid: 0eba4efae472b0243bf633234692253e
+  - enabled: 1
+    path: Assets/Scenes/Day 1.unity
+    guid: 24a9b629d9f95d447a7e8fb19ba8146f
+  - enabled: 1
+    path: Assets/Scenes/Day 2.unity
+    guid: 85a128ad2edf52b49a4f0935f723e39b
+  - enabled: 1
+    path: Assets/Scenes/Day 3.unity
+    guid: 8ee605968cb77514796b3534609cdbd6
+  - enabled: 1
+    path: Assets/Scenes/Day1 PewPew.unity
+    guid: adeaf1262b79cf54b9968548f956d031
   m_configObjects: {}
