@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Day1 PewPew.unity
     guid: adeaf1262b79cf54b9968548f956d031
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 6ad33b185835e7d4ebc264f300a3ebc8
   m_configObjects: {}
