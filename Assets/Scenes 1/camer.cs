@@ -5,7 +5,7 @@ using UnityEngine;
 public class camer : MonoBehaviour
 {
     [SerializeField]private Vector3 offset = new Vector3(0f , 0f , -10f);
-    [SerializeField]private float smoothTime = 0.01f;
+    public float smoothTime = 0.01f;
     private Vector3 velocity = Vector3.zero;
     [SerializeField] private Transform target;
 

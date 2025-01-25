@@ -5,14 +5,12 @@ using UnityEngine;
 public class Computer : InteractableObject
 {
     SceneLoader sl;
+    void Start()
+    {
+        sl = FindAnyObjectByType<SceneLoader>();
+    }
     public override void Interacted()
     {
-
-        void Start()
-        {
-            sl = FindObjectOfType<SceneLoader>();
-        }
-
         if (isInteracted)
         {
             StartCoroutine(sl.LoadScene(5));

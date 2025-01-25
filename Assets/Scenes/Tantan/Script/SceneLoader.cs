@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] Animator transAnimator;
     [SerializeField] float animTime = 1f;
 
-    private void Awake()
-    {
-        transAnimator.SetInteger("SceneValue", 0/*SceneManager.GetActiveScene().buildIndex*/);
-    }
+    [SerializeField] GameObject image;
 
     public IEnumerator LoadScene(int index)
     {
