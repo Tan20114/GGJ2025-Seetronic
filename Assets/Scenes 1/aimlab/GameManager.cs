@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Text timerText;
 
     private int score = 0;
-    private float gameTime = 60f;
+    private float gameTime = 30f;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         gameTime -= Time.deltaTime;
-        timerText.text = $"เวลา: {Mathf.Max(0, Mathf.CeilToInt(gameTime))}";
+        timerText.text = $"Time : {Mathf.Max(0, Mathf.CeilToInt(gameTime))}";
 
         if (gameTime <= 0)
         {
@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        scoreText.text = $"คะแนน: {score}";
+        scoreText.text = $"Score : {score}";
     }
 
     private void EndGame()
     {
-        Debug.Log("เกมจบ! คะแนนรวม: " + score);
+        Debug.Log("End Score: " + score);
         Time.timeScale = 0;
     }
 }
