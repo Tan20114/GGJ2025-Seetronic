@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPC : InteractableObject
 {
-    [SerializeField] private List<GameObject> speech;
-    private int count = 0;
+    public List<GameObject> speech;
+    public int count = 0;
 
     public override void Interacted()
     {
