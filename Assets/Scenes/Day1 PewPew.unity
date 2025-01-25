@@ -666,6 +666,7 @@ MonoBehaviour:
   scoreText: {fileID: 99847998}
   timerText: {fileID: 1208665106}
   EndText: {fileID: 1528636465}
+  isEnd: 0
 --- !u!4 &1247912837
 Transform:
   m_ObjectHideFlags: 0
@@ -881,6 +882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803511465}
+  - component: {fileID: 1803511466}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -903,6 +905,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1803511466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803511464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c797958432a76d47929b0336c696706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2132917259
 GameObject:
   m_ObjectHideFlags: 0
