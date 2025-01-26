@@ -13,6 +13,9 @@ public class Movement : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animPlayer;
 
+    [SerializeField] AudioSource a;
+    [SerializeField] AudioClip walkClips;
+
     private Vector3 movement; // For tracking input
     private bool isMoving;    // To determine animation state
 
@@ -23,12 +26,18 @@ public class Movement : MonoBehaviour
 
     void PlayerMovement()
     {
+
         movement = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
+        {
             movement += Vector3.forward;
-        if (Input.GetKey(KeyCode.S)) 
+
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
             movement += Vector3.back;
+        }
         if (Input.GetKey(KeyCode.A))
         {
             movement += Vector3.left;
@@ -41,9 +50,21 @@ public class Movement : MonoBehaviour
         }
 
         isMoving = movement != Vector3.zero;
+
+        bool isTrigger = false;
         if (isMoving)
         {
             transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+            if (!isTrigger)
+            {
+                isTrigger = true;
+                a.Play();
+            }
+        }
+        else
+        {
+            a.Stop();
+            isTrigger = false;
         }
 
         animPlayer.SetBool("isWalk", isMoving);
