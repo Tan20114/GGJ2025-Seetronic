@@ -33,6 +33,6 @@ public class MainMenu : MonoBehaviour
 
     void ShowCredit()
     {
-
+        StartCoroutine(sl.LoadScene(6));
     }
 }
