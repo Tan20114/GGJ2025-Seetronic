@@ -5,23 +5,25 @@ using UnityEngine.UI;
 public class breaker : MonoBehaviour
 {
     public Button button;
-    public Color normalColor = Color.red;
-    public Color pressedColor = Color.yellow;
+    public Sprite normalColor;       // This is the sprite when the button is in its "normal" state
+    public Sprite pressedColor;      // This is the sprite when the button is in the "pressed" state
     private Image buttonImage;
-
 
     public TMP_Text buttonText;
     public string normalText = "off";
     public string pressedText = "on";
+    public Sprite newNormalSprite;   // This is the sprite that should be used at the start
 
     void Start()
     {
         buttonImage = button.GetComponent<Image>();
 
+        // Set the initial button sprite to newNormalSprite.
         if (buttonImage != null)
         {
-            buttonImage.color = normalColor;
+            buttonImage.sprite = normalColor; // Set the sprite initially
         }
+
         button.onClick.AddListener(ChangeColor);
         if (buttonText != null)
         {
@@ -32,25 +34,30 @@ public class breaker : MonoBehaviour
 
     void ChangeColor()
     {
-        if (buttonImage.color == normalColor)
+        // Toggle button image between normal and pressed state
+        if (buttonImage.sprite == normalColor)
         {
-            buttonImage.color = pressedColor;
+            buttonImage.sprite = pressedColor;
             ScoreManager.totalScore++;
             Debug.Log($"{ScoreManager.totalScore}");
         }
         else
         {
-            buttonImage.color = normalColor;
-            ScoreManager.totalScore --;
+            buttonImage.sprite = normalColor;
+            ScoreManager.totalScore--;
             Debug.Log($"{ScoreManager.totalScore}");
         }
-        if(ScoreManager.totalScore == 6)
+
+        // Check score condition
+        if (ScoreManager.totalScore == 6)
         {
             Debug.Log("ครบละไอสัส");
         }
     }
+
     void ChangeText()
     {
+        // Toggle button text between "off" and "on"
         if (buttonText.text == normalText)
         {
             buttonText.text = pressedText;
@@ -61,4 +68,3 @@ public class breaker : MonoBehaviour
         }
     }
 }
-

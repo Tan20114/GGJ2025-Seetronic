@@ -8,14 +8,15 @@ public class ToScene3 : MonoBehaviour
 
     private void Start()
     {
-        sl =FindAnyObjectByType<SceneLoader>();
+        sl = FindAnyObjectByType<SceneLoader>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(sl.LoadScene(3));
         }
-    }
+    }   
 }
+
